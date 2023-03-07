@@ -1,0 +1,22 @@
+.author {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 25px;
+  background-color: transparent;
+  border-radius: 30px;
+  max-width: 750px;
+  background: linear-gradient(
+    125deg,
+    rgb(188, 180, 207) 40%,
+    rgb(81, 112, 191) 100%
+  );
+}
+
+.git-link,
+.linkedIn-link,
+.netlify-link {
+  text-decoration: underline;
+  color: #fff;
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
+export default function Weather(props) {
   const [loading, setLoading] = useState(false);
   const [weather, setWeather] = useState({});
   function handleResponse(response) {
@@ -11,11 +11,15 @@ export default function Weather() {
 
     setWeather({
       city: response.data.city,
+      day: "Wednesday",
+      date: `March 9`,
+      time: `12 PM`,
       temperature: Math.round(response.data.temperature.current),
       description: response.data.condition.description,
       feelsLike: Math.round(response.data.temperature.feels_like),
       wind: Math.round(response.data.wind.speed),
       humidity: response.data.temperature.humidity,
+      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png`,
     });
   }
 
@@ -56,11 +60,15 @@ export default function Weather() {
                       {weather.city}
                     </h2>
                     <div className="d-sm-inline-flex">
-                      <span className="today" id="current-day"></span>
-                      <span className="date-main" id="current-date"></span>
+                      <span className="today" id="current-day">
+                        {weather.day},{""}
+                      </span>
+                      <span className="date-main" id="current-date">
+                        {weather.date}
+                      </span>
                     </div>
                     <div className="d-sm-flex time-main" id="current-time">
-                      Date&Time
+                      {weather.time}
                     </div>
                   </div>
                   <div className="d-flex" style={{ textAlign: "right" }}>
@@ -70,8 +78,8 @@ export default function Weather() {
                         style={{ marginLeft: "30px" }}
                       >
                         <img
-                          src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                          alt="partly cloudy"
+                          src={weather.iconUrl}
+                          alt={weather.description}
                           className="main-weather-icon"
                           id="main-weather-icon"
                         />
@@ -169,9 +177,8 @@ export default function Weather() {
     );
   } else {
     const apiKey = "646809et7a8c3ba7374obd5ce9af7bc0";
-    let city = "Cancun";
 
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.city}&key=${apiKey}&units=metric`;
 
     axios.get(apiUrl).then(handleResponse);
 

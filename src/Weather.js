@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import FormattedDate from "./FormattedDate";
 import "./Weather.css";
 
 export default function Weather(props) {
@@ -11,9 +12,7 @@ export default function Weather(props) {
 
     setWeather({
       city: response.data.city,
-      day: "Wednesday",
-      date: `March 9`,
-      time: `12 PM`,
+      date: new Date(response.data.time * 1000),
       temperature: Math.round(response.data.temperature.current),
       description: response.data.condition.description,
       feelsLike: Math.round(response.data.temperature.feels_like),
@@ -60,15 +59,9 @@ export default function Weather(props) {
                       {weather.city}
                     </h2>
                     <div className="d-sm-inline-flex">
-                      <span className="today" id="current-day">
-                        {weather.day},{""}
+                      <span className="date-main">
+                        <FormattedDate date={weather.date} />
                       </span>
-                      <span className="date-main" id="current-date">
-                        {weather.date}
-                      </span>
-                    </div>
-                    <div className="d-sm-flex time-main" id="current-time">
-                      {weather.time}
                     </div>
                   </div>
                   <div className="d-flex" style={{ textAlign: "right" }}>

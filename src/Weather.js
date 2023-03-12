@@ -20,7 +20,7 @@ export default function Weather(props) {
       feelsLike: Math.round(response.data.temperature.feels_like),
       wind: Math.round(response.data.wind.speed),
       humidity: response.data.temperature.humidity,
-      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png`,
+      iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
     });
   }
 

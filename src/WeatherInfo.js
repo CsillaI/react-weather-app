@@ -1,6 +1,7 @@
 import React from "react";
 import FormattedDate from "./FormattedDate";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 
 export default function WeatherInfo(props) {
   return (
@@ -27,24 +28,7 @@ export default function WeatherInfo(props) {
             </h3>
           </div>
         </div>
-
-        <div
-          className="d-sm-inline-flex temperature-wrapper"
-          style={{ marginTop: "30px" }}
-        >
-          <h1 className="d-sm-inline-flex">
-            {props.data.temperature}
-            <span className="temperature-main"></span>
-            <span className="d-sm-inline-flex units">
-              <a href="/" className="celsius active" rel="noreferrer">
-                &deg;C<span className="units-separator">|</span>
-              </a>
-              <a href="/" className="fahrenheit" rel="noreferrer">
-                &deg;F
-              </a>
-            </span>
-          </h1>
-        </div>
+        <WeatherTemperature celsius={props.data.temperature} />
 
         <div
           className="d-sm-inline-flex more-weather-details-wrapper"

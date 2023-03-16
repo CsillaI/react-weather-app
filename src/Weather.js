@@ -73,7 +73,7 @@ export default function Weather(props) {
               </div>
             </div>
 
-            <WeatherForecast />
+            <WeatherForecast city="Cluj-Napoca" />
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ export default function WeatherInfo(props) {
               className="d-sm-inline-flex align-content-sm-center"
               style={{ marginLeft: "30px" }}
             >
-              <WeatherIcon code={props.data.icon} />
+              <WeatherIcon code={props.data.icon} size={100} />
             </h3>
           </div>
         </div>

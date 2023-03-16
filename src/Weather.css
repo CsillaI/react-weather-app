@@ -113,6 +113,7 @@ h1.d-sm-inline-flex {
   padding: 0px;
   width: max-content;
   height: max-content;
+  margin-left: 15px;
 }
 
 .temperature-wrapper .active {
@@ -168,7 +169,7 @@ div.weather-description {
   font-weight: bolder;
 }
 
-.temperature {
+.WeatherForecast-temperatures {
   font-size: 20px;
 }
 
@@ -225,6 +226,6 @@ div .date {
   border-style: solid rgba(17, 38, 165, 0.9);
 }
 
-.max-temp {
+.WeatherForecast-temp-max {
   font-weight: bold;
 }

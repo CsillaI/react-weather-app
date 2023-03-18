@@ -7,21 +7,6 @@ export default function WeatherForecast(props) {
   const [forecast, setForecast] = useState(false);
   const [city, setCity] = useState(props.city);
 
-  function search() {
-    function handleResponse(response) {
-      console.log(response);
-      setForecast(true);
-      setCity(response.city);
-    }
-
-    const apiKey = "646809et7a8c3ba7374obd5ce9af7bc0";
-    let units = "metric";
-
-    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
-
-    axios.get(apiUrl).then(handleResponse);
-  }
-
   if (forecast) {
     return (
       <div className="WeatherForecast">
@@ -42,7 +27,19 @@ export default function WeatherForecast(props) {
       </div>
     );
   } else {
-    search();
+    function handleResponse(response) {
+      console.log(response);
+      setForecast(true);
+      setCity(response.data.city);
+    }
+
+    const apiKey = "646809et7a8c3ba7374obd5ce9af7bc0";
+    let units = "metric";
+
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
+
+    axios.get(apiUrl).then(handleResponse);
+
     return <div>Loading...</div>;
   }
 }

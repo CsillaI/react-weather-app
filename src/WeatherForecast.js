@@ -1,36 +1,36 @@
 import React, { useState } from "react";
+import WeatherForecastDay from "./WeatherForecastDay";
 
-import WeatherIcon from "./WeatherIcon";
 import axios from "axios";
 
 export default function WeatherForecast(props) {
-  const [forecast, setForecast] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const [city, setCity] = useState(props.city);
+  const [forecastData, setForecastData] = useState(null);
 
-  if (forecast) {
+  if (loaded) {
     return (
       <div className="WeatherForecast">
-        <div className="card text-center first" style={{ width: "9rem" }}>
-          <div className="card-body">
-            <h5 className="card-title">Wed</h5>
-            <div className="card-text">
-              <div className="date">Mar 15</div>
-              <WeatherIcon code="clear-sky-day" size={65} />
-              <div className="WeatherForecast-temperatures">
-                <span className="WeatherForecast-temp-max">20°C</span>
-                <span className="WeatherForecast-temp-separator">/</span>
-                <span className="WeatherForecast-temp-min">11°C</span>
-              </div>
+        {forecastData.map(function (dailyForecast, index) {
+          return (
+            <div
+              className="card text-center first"
+              key={index}
+              style={{ width: "9rem" }}
+            >
+              {index}
+              <WeatherForecastDay forecast={dailyForecast} />
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     );
   } else {
     function handleResponse(response) {
       console.log(response);
-      setForecast(true);
+      setLoaded(true);
       setCity(response.data.city);
+      setForecastData(response.data.daily);
     }
 
     const apiKey = "646809et7a8c3ba7374obd5ce9af7bc0";

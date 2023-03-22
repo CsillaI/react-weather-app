@@ -12,16 +12,20 @@ export default function WeatherForecast(props) {
     return (
       <div className="WeatherForecast">
         {forecastData.map(function (dailyForecast, index) {
-          return (
-            <div
-              className="card text-center first"
-              key={index}
-              style={{ width: "9rem" }}
-            >
-              {index}
-              <WeatherForecastDay forecast={dailyForecast} />
-            </div>
-          );
+          if (index < 6) {
+            return (
+              <div className="row forecast-wrapper" key={index}>
+                <div className="col-md-2">
+                  <div
+                    className="card text-center first"
+                    style={{ width: "9rem" }}
+                  >
+                    <WeatherForecastDay forecast={dailyForecast} />
+                  </div>
+                </div>
+              </div>
+            );
+          }
         })}
       </div>
     );

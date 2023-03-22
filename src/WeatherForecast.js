@@ -15,7 +15,7 @@ export default function WeatherForecast(props) {
           if (index < 6) {
             return (
               <div className="row forecast-wrapper" key={index}>
-                <div className="col-md-2">
+                <div className="col-md-6">
                   <div
                     className="card text-center first"
                     style={{ width: "9rem" }}

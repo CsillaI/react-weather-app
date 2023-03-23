@@ -1,5 +1,7 @@
 import React from "react";
 import WeatherIcon from "./WeatherIcon";
+import Card from "react-bootstrap/Card";
+import Col from "react-bootstrap/Col";
 
 export default function WeatherForecastDay(props) {
   function maxTemperature() {
@@ -49,23 +51,25 @@ export default function WeatherForecastDay(props) {
   }
 
   return (
-    <div>
-      <div className="card-body">
-        <h5 className="card-title">{day()}</h5>
-        <div className="card-text">
-          <div className="date">{today()}</div>
-          <WeatherIcon code={props.forecast.condition.icon} size={65} />
-          <div className="WeatherForecast-temperatures">
-            <span className="WeatherForecast-temp-max">
-              {maxTemperature()}°C
-            </span>
-            <span className="WeatherForecast-temp-separator">/</span>
-            <span className="WeatherForecast-temp-min">
-              {minTemperature()}°C
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Col>
+      <Card className="card text-center first" style={{ width: "9rem" }}>
+        <Card.Body className="card-body">
+          <Card.Title className="card-title">{day()}</Card.Title>
+          <Card.Text className="card-text">
+            <div className="date">{today()}</div>
+            <WeatherIcon code={props.forecast.condition.icon} size={65} />
+            <div className="WeatherForecast-temperatures">
+              <span className="WeatherForecast-temp-max">
+                {maxTemperature()}°C
+              </span>
+              <span className="WeatherForecast-temp-separator">/</span>
+              <span className="WeatherForecast-temp-min">
+                {minTemperature()}°C
+              </span>
+            </div>
+          </Card.Text>
+        </Card.Body>
+      </Card>
+    </Col>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import WeatherInfo from "./WeatherInfo";
@@ -9,6 +9,11 @@ export default function Weather(props) {
   const [loading, setLoading] = useState(false);
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState(props.city);
+
+  useEffect(() => {
+    setLoading(false);
+  }, [props.city]);
+
   function handleResponse(response) {
     console.log(response);
     setLoading(true);

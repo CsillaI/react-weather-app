@@ -229,3 +229,7 @@ div .date {
 .WeatherForecast-temp-max {
   font-weight: bold;
 }
+
+.WeatherForecast {
+  display: flex;
+}

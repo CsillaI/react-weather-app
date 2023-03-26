@@ -55,19 +55,18 @@ export default function WeatherForecastDay(props) {
       <Card className="card text-center first" style={{ width: "9rem" }}>
         <Card.Body className="card-body">
           <Card.Title className="card-title">{day()}</Card.Title>
-          <Card.Text className="card-text">
-            <div className="date">{today()}</div>
-            <WeatherIcon code={props.forecast.condition.icon} size={65} />
-            <div className="WeatherForecast-temperatures">
-              <span className="WeatherForecast-temp-max">
-                {maxTemperature()}°C
-              </span>
-              <span className="WeatherForecast-temp-separator">/</span>
-              <span className="WeatherForecast-temp-min">
-                {minTemperature()}°C
-              </span>
-            </div>
-          </Card.Text>
+
+          {today()}
+          <WeatherIcon code={props.forecast.condition.icon} size={65} />
+          <span className="WeatherForecast-temperatures">
+            <span className="WeatherForecast-temp-max">
+              {maxTemperature()}°C
+            </span>
+            <span className="WeatherForecast-temp-separator">/</span>
+            <span className="WeatherForecast-temp-min">
+              {minTemperature()}°C
+            </span>
+          </span>
         </Card.Body>
       </Card>
     </Col>

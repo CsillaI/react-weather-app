@@ -15,8 +15,8 @@ export default function WeatherForecast(props) {
         {forecastData.map(function (dailyForecast, index) {
           if (index < 6) {
             return (
-              <Row xs={1} md={6} className="g-6 forecast-wrapper">
-                <div key={index}>
+              <Row xs={1} md={6} key={index} className="g-6 forecast-wrapper">
+                <div>
                   <WeatherForecastDay forecast={dailyForecast} />
                 </div>
               </Row>

@@ -126,6 +126,7 @@ h1.d-sm-inline-flex {
 }
 
 a.fahrenheit {
+  color: #b56576;
   text-decoration: none;
   font-size: 30px;
 }

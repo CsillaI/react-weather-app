@@ -54,9 +54,9 @@ export default function WeatherForecastDay(props) {
     <Col>
       <Card className="card text-center first" style={{ width: "9rem" }}>
         <Card.Body className="card-body">
-          <Card.Title className="card-title">{day()}</Card.Title>
+          <Card.Title className="card-title fs-4 fw-bold">{day()}</Card.Title>
 
-          {today()}
+          <span className="fs-5">{today()}</span>
           <WeatherIcon code={props.forecast.condition.icon} size={65} />
           <span className="WeatherForecast-temperatures">
             <span className="WeatherForecast-temp-max">

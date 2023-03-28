@@ -53,7 +53,7 @@ export default function Weather(props) {
                 <form className="mb-3" onSubmit={handleSubmit}>
                   <input
                     type="text"
-                    className="form-control shadow-sm"
+                    className="form-control shadow-sm me-2"
                     placeholder="Enter city name..."
                     autoFocus="on"
                     autoComplete="off"
@@ -61,7 +61,7 @@ export default function Weather(props) {
                   />
                   <input
                     type="submit"
-                    className="btn btn-primary shadow-sm search-button"
+                    className="btn btn-primary shadow-sm search-button me-2"
                     value="Search"
                   />
                   <input

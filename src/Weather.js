@@ -26,9 +26,7 @@ export default function Weather(props) {
     console.log(response);
   }
 
-  function getCurrentWeather(event) {
-    event.preventDefault();
-
+  function getCurrentWeather() {
     let key = "646809et7a8c3ba7374obd5ce9af7bc0";
     let lon = currentLocation.longitude;
     let lat = currentLocation.latitude;
@@ -42,8 +40,7 @@ export default function Weather(props) {
     console.log(response);
   }
 
-  function getCurrentForecast(event) {
-    event.preventDefault();
+  function getCurrentForecast() {
     let key = "646809et7a8c3ba7374obd5ce9af7bc0";
     let lon = currentLocation.longitude;
     let lat = currentLocation.latitude;
@@ -111,7 +108,10 @@ export default function Weather(props) {
                     type="submit"
                     className="btn btn-secondary shadow-sm current-button"
                     value="Current"
-                    onClick={(getCurrentWeather, getCurrentForecast)}
+                    onClick={() => {
+                      getCurrentWeather();
+                      getCurrentForecast();
+                    }}
                   />
                 </form>
                 <WeatherInfo data={weather} />

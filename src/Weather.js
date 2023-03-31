@@ -22,10 +22,6 @@ export default function Weather(props) {
     });
   };
 
-  function showCurrentWeather(response) {
-    console.log(response);
-  }
-
   function getCurrentWeather() {
     let key = "646809et7a8c3ba7374obd5ce9af7bc0";
     let lon = currentLocation.longitude;
@@ -33,7 +29,7 @@ export default function Weather(props) {
 
     let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${key}&units=metric`;
 
-    axios.get(apiUrl).then(showCurrentWeather);
+    axios.get(apiUrl).then(handleResponse);
   }
 
   function showCurrentForecast(response) {

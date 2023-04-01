@@ -107,6 +107,7 @@ export default function Weather(props) {
                     onClick={() => {
                       getCurrentWeather();
                       getCurrentForecast();
+                      setCity("");
                     }}
                   />
                 </form>

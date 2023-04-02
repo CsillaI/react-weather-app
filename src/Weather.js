@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import WeatherInfo from "./WeatherInfo";
@@ -9,23 +9,17 @@ export default function Weather(props) {
   const [loading, setLoading] = useState(false);
   const [weather, setWeather] = useState({});
   const [city, setCity] = useState(props.city);
-  const [currentLocation, setCurrentLocation] = useState({});
-
-  useEffect(() => {
-    getGeolocation();
-  }, []);
 
   const getGeolocation = async () => {
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
-      setCurrentLocation({ latitude, longitude });
+      getCurrentWeather(latitude, longitude);
+      getCurrentForecast(latitude, longitude);
     });
   };
 
-  function getCurrentWeather() {
+  function getCurrentWeather(lat, lon) {
     let key = "646809et7a8c3ba7374obd5ce9af7bc0";
-    let lon = currentLocation.longitude;
-    let lat = currentLocation.latitude;
 
     let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${key}&units=metric`;
 
@@ -36,10 +30,8 @@ export default function Weather(props) {
     console.log(response);
   }
 
-  function getCurrentForecast() {
+  function getCurrentForecast(lat, lon) {
     let key = "646809et7a8c3ba7374obd5ce9af7bc0";
-    let lon = currentLocation.longitude;
-    let lat = currentLocation.latitude;
 
     let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${key}&units=metric`;
 
@@ -104,11 +96,7 @@ export default function Weather(props) {
                     type="submit"
                     className="btn btn-secondary shadow-sm current-button"
                     value="Current"
-                    onClick={() => {
-                      getCurrentWeather();
-                      getCurrentForecast();
-                      setCity("");
-                    }}
+                    onClick={getGeolocation}
                   />
                 </form>
                 <WeatherInfo data={weather} />
